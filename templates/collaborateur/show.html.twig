@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Collaborateur{% endblock %}
+
+{% block body %}
+    <h1>Collaborateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ collaborateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ collaborateur.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ collaborateur.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ collaborateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ collaborateur.phone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_collaborateur_index') }}">Retour à la liste</a>
+
+    <a class="btn btn-secondary" href="{{ path('app_collaborateur_edit', {'id': collaborateur.id}) }}">Modifier</a>
+
+    {{ include('collaborateur/_delete_form.html.twig') }}
+{% endblock %}

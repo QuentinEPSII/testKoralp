@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Collaborateurs{% endblock %}
+
+{% block body %}
+    <h1>Collaborateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for collaborateur in collaborateurs %}
+            <tr>
+                <td>{{ collaborateur.id }}</td>
+                <td>{{ collaborateur.lastname }}</td>
+                <td>{{ collaborateur.firstname }}</td>
+                <td>{{ collaborateur.email }}</td>
+                <td>{{ collaborateur.phone }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_collaborateur_show', {'id': collaborateur.id}) }}">Voir</a>
+                    <a class="btn btn-secondary" href="{{ path('app_collaborateur_edit', {'id': collaborateur.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_collaborateur_new') }}">Ajouter un collaborateur</a>
+{% endblock %}
